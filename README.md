@@ -31,7 +31,7 @@ cp docroot/sites/default/settings/lando.local.settings.php docroot/sites/default
 lando start
 ```
 
-* Use 'lando drush` to install the default Drupal 8 installation profile:
+* Use `lando drush` to install the default Drupal 8 installation profile:
 
 ```
 lando drush site-install standard --db-url=mysql://drupal8:drupal8@database/drupal8 -y
