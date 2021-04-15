@@ -1,0 +1,37 @@
+name: screening-d8
+recipe: drupal8
+config:
+  php: "7.3"
+  webroot: web
+  xdebug: false
+events:
+  # Clear cache after a database import
+  post-db-import:
+    - appserver: cd $LANDO_WEBROOT && drush cache-rebuild --yes
+services:
+  appserver:
+    # build_as_root:
+    #   - apt update -y && apt install -y apt-transport-https
+    #   - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+    #   - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+    #   - curl -sL https://deb.nodesource.com/setup_10.x | bash -
+    #   - apt install -y nodejs
+    #   - apt update -y && apt install -y yarn=1.12.3-1
+    run:
+      - cd $LANDO_MOUNT && composer install
+      # - cd $LANDO_MOUNT/web/themes/custom/pathwave && yarn install
+    overrides:
+      environment:
+        DRUSH_OPTIONS_URI: "https://screening-d8.lndo.site"
+  node:
+    type: node:14
+tooling:
+  # blt:
+  #   service: appserver
+  #   cmd: /app/vendor/bin/blt
+  npm:
+    service: node
+  node:
+    service: node
+  # yarn:
+  #   service: appserver
