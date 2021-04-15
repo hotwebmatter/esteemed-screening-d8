@@ -55,6 +55,6 @@ $ git checkout -b candidate_name
 
 * Use BLT to run tests on their code. [README-BLT](./README-BLT.md)
 
-## Local dev preview environment
+## Screening preview environment
 
-* Forthcoming: local dev preview, possible deploy to screening environment.
+* Forthcoming: possible deploy to screening environment online (not a priority).
